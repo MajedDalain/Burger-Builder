@@ -1,0 +1,11 @@
+.Burger {
+    background-color: rgb(58, 99, 211);
+    margin: 20px;
+    padding: 20px;
+}
+
+.BuilderControls {
+    background-color: rgb(131, 109, 113);
+    margin: 20px;
+    padding: 10px;
+}
