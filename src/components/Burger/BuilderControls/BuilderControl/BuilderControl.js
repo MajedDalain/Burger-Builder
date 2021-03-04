@@ -3,7 +3,7 @@ import React from 'react'
 const builderControl = (props) => {
     return (
     <div>
-       {props.children}
+       <label>{props.label}</label>
     </div>)
 }
 
