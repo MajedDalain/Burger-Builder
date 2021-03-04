@@ -4,6 +4,14 @@
     padding: 20px;
 }
 
+.BurgerIngridents {
+    /* background-color: pink; */
+    width: 300px;
+    height: 300px;
+    margin: auto;
+    padding: 10%;
+}
+
 .BuilderControls {
     background-color: rgb(131, 109, 113);
     margin: 20px;

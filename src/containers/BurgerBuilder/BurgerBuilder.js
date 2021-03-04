@@ -11,8 +11,9 @@ class BurgerBuilder extends Component {
         this.state = {
             ingridents: {
             salad:2,
-            cheese: 1,
-            meat:1
+            bacon:1,
+            cheese: 2,
+            meat:2,
         }, 
         totalPrice: 0
         }
@@ -23,8 +24,12 @@ class BurgerBuilder extends Component {
     render() {
         return (
         <Aux>
+            <div className= {classes.BurgerIngridents}>
             <Burger ingridents = {this.state.ingridents}/>
-            <BuilderControls/>
+            </div>
+            <div className={classes.BuilderControls}>
+             <BuilderControls ingridents = {this.state.ingridents}/>
+            </div>
         </Aux>
         )
     }
