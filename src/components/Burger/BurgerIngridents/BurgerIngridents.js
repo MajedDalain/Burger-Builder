@@ -8,9 +8,11 @@ const burgerIngridents = (props) => {
     let allIngridents = []; 
     const ingridentsLabels = Object.keys(props.ingridents);
     
-    ingridentsLabels.map(el => {
+    ingridentsLabels.map((el,index) => {
         for(let i = 0 ; i < props.ingridents[el]; i++) {
-            allIngridents.push( <BurgerIngrident type= {el}></BurgerIngrident>);   // should check better way
+            console.log("inside the for loop");
+            console.log(i);
+            allIngridents.push( <BurgerIngrident  type= {el}></BurgerIngrident>); 
         }
     })
     
