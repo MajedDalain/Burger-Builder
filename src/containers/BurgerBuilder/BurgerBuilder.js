@@ -24,7 +24,8 @@ class BurgerBuilder extends Component {
         cheese: 0,
         meat:0,
     }, 
-    totalPrice: 0
+    totalPrice: 0,
+    showModal: false
     }
 
     componentDidMount() {
@@ -46,6 +47,16 @@ class BurgerBuilder extends Component {
     }))
    }
 
+   showOrderModal = () =>  {
+       this.setState({showModal: true});
+   }
+
+   hideOrderModal = () => {
+    this.setState({showModal: false});
+   }
+
+
+
    removeIngrident = (e)  => {
     const type = e.target.name;
     let newValue = this.state.ingridents[type] - 1 ;
@@ -62,6 +73,7 @@ class BurgerBuilder extends Component {
    }
    
     render() {
+        const orderBtnStyle = `${classes.OrderNow} ${this.state.totalPrice > 0 ? classes.OrderNowActive : classes.OrderNowDisable}`;
         return (
         <Aux>
             <div className= {classes.BurgerIngridents}>
@@ -72,9 +84,9 @@ class BurgerBuilder extends Component {
              <BuilderControls ingridents = {this.state.ingridents} add={this.addIngrident} remove= {this.removeIngrident}/>
             </div>
             <div>
-                <button className={`${classes.OrderNow} ${this.state.totalPrice > 0 ? classes.OrderNowActive : classes.OrderNowDisable}`}>
+                <button className={orderBtnStyle} onClick={this.showOrderModal}>
                     Order Now
-                    </button>
+                </button>
             </div>
         </Aux>
         )
