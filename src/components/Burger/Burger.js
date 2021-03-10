@@ -3,7 +3,6 @@ import Aux from '../../containers/hoc/Aux/Aux';
 import BurgerIngridents from './BurgerIngridents/BurgerIngridents';
 
 const burger = (props) => {
-    console.log(props);
     return (
     <Aux>
         <BurgerIngridents ingridents = {props.ingridents}/>     

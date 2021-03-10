@@ -32,4 +32,10 @@
     color: #f40404;
     font-size: 3rem;
     cursor: pointer;
+    opacity: 1;
+}
+
+.Disable {
+    opacity: .2;
+    pointer-events: none;
 }

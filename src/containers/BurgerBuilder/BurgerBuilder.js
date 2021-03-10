@@ -2,7 +2,9 @@ import React, {Component} from 'react';
 import Burger from '../../components/Burger/Burger';
 import Aux from '../hoc/Aux/Aux';
 import BuilderControls from '../../components/Burger/BuilderControls/BuilderControls';
+import Modal from '../../components/UI/Modal/Modal'
 import classes from './BurgerBuilder.module.css';
+
 
 class BurgerBuilder extends Component {
 
@@ -79,6 +81,9 @@ class BurgerBuilder extends Component {
             <div className= {classes.BurgerIngridents}>
             <Burger ingridents = {this.state.ingridents}/>
             </div>
+            {this.state.showModal && <div className={classes.Modal}>
+                    <Modal ingridents={this.state.ingridents} cancel={this.hideOrderModal}/>
+                </div>}
             <span className={classes.TotalPrice}>total Price: {this.state.totalPrice}{" $"}</span>
             <div className={classes.BuilderControls}>
              <BuilderControls ingridents = {this.state.ingridents} add={this.addIngrident} remove= {this.removeIngrident}/>

@@ -10,8 +10,6 @@ const burgerIngridents = (props) => {
     
     ingridentsLabels.map((el,index) => {
         for(let i = 0 ; i < props.ingridents[el]; i++) {
-            console.log("inside the for loop");
-            console.log(i);
             allIngridents.push( <BurgerIngrident  type= {el}></BurgerIngrident>); 
         }
     })
