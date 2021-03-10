@@ -3,9 +3,11 @@ import classes from './Toolbar.module.css';
 
 const toolbar = () => {
     return (
-    <div className={classes.toolbar}>
-        Tool bar 
-    </div>)
+    <header className={classes.toolbar}>
+        <div>Menu</div> 
+        <div>Nav Items</div> 
+        <div>lOGO</div> 
+    </header>)
 }
 
 export default toolbar;

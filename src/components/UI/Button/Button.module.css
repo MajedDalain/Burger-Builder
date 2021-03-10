@@ -1,0 +1,18 @@
+.All {
+    margin: 1rem;
+    padding: .5rem; 
+    font-size: 0.9rem;
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: .3rem; 
+    width: 5rem;
+}
+
+.Confirm {
+    background: green;
+}
+
+.Cancel {
+    background: red;
+}

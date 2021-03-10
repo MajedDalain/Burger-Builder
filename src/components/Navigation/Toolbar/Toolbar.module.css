@@ -1,6 +1,10 @@
 .toolbar {
-    padding-top: 20px;
+    position: fixed;
+    padding: 20px;
     background-color: yellow;
     height: 50px;
     width: 100%;
+    display: flex;
+    justify-content: space-around;
+    z-index: 90;
 }
