@@ -3,3 +3,8 @@
     display: flex;
     justify-content: space-between;
 }
+
+.TotalPrice  {
+    color: red;
+    font-size: 1.3rem;
+}

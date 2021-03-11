@@ -1,0 +1,19 @@
+.Main {
+ width: 4rem;
+ height: 3rem;
+ display: flex;
+ flex-direction: column;
+ justify-content: space-evenly;
+}
+
+.Item {
+    width: 70%;
+    height: 3px;
+    background: rgb(41, 146, 90);
+}
+
+@media (min-width: 500px) {
+    .Main {
+        display: none;
+    }
+}

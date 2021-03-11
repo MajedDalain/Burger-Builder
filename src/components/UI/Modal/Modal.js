@@ -10,7 +10,7 @@ const Modal = (props) => {
         <Aux>
             <BackDrop/>
             <div className={classes.Modal}>
-                <OrderSummary ingridents={props.ingridents}/>
+                <OrderSummary totalPrice={props.totalPrice} ingridents={props.ingridents}/>
                 <div>
                     <Button type="Confirm">Confirm</Button>
                     <Button type = "Cancel" cancel={props.cancel}>Cancel</Button>

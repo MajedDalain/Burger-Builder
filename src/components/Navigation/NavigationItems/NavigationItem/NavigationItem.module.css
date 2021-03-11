@@ -1,0 +1,15 @@
+.NavigationItem {
+    margin: 1rem;
+    font-weight: bold;
+}
+
+.NavigationItem a {
+    color: rgb(5, 56, 116);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.NavigationItem a:active,
+.NavigationItem a.active {
+    border-bottom: 2px solid rgb(29, 91, 161);
+}

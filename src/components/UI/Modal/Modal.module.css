@@ -4,7 +4,7 @@
     z-index: 200;
     width: 80%;
     background-color: #f4d004;
-    top: 40%;
+    top: 30%;
     left: 5%;
     border-radius: 10px;
 }
@@ -12,7 +12,7 @@
 .Modal ul {
     list-style: none;
     width: 50%;
-    margin:  1rem auto;
+    margin:  1rem auto 0rem auto;
     padding: 1rem;
     align-items: center;
 }
