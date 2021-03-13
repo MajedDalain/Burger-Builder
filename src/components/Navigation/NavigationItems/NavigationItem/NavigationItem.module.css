@@ -1,6 +1,8 @@
 .NavigationItem {
     margin: 1rem;
     font-weight: bold;
+    font-size: 1.1rem;
+    
 }
 
 .NavigationItem a {
@@ -10,6 +12,7 @@
 }
 
 .NavigationItem a:active,
+.NavigationItem a:hover,
 .NavigationItem a.active {
-    border-bottom: 2px solid rgb(29, 91, 161);
+    border-bottom: 1.5px solid rgb(29, 91, 161);
 }
