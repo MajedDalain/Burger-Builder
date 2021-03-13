@@ -1,5 +1,5 @@
 .BurgerIngridents {
-    overflow: scroll;
+    overflow-y: auto;
     width: 300px;
     height: 300px;
     margin: 6rem auto 1rem auto;
@@ -36,4 +36,14 @@
 .OrderNowActive {
     opacity: 1;
     cursor: pointer;
+}
+
+@media (min-width: 500px) {
+    .BurgerIngridents {
+        width: 500px;
+        height: 400px;
+        margin: 3rem auto 1rem auto;
+       
+   
+    }
 }

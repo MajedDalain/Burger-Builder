@@ -24,6 +24,7 @@ const orderSummary = (props) => {
             <ul>
                 {ingridentsList}
             </ul>
+            <span>Price : <strong className={classes.TotalPrice}>{props.totalPrice} $</strong></span>
         </Aux>
     )
 }

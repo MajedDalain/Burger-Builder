@@ -1,0 +1,10 @@
+.NavigationItems  {
+    display: flex;
+    list-style: none;
+}
+
+@media(max-width: 499px ) {
+    .NavigationItems {
+        display: none;
+    }
+}

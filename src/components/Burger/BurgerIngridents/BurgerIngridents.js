@@ -17,7 +17,8 @@ const burgerIngridents = (props) => {
     return (
         <Aux>
             <BurgerIngrident type="top-bread">Bread</BurgerIngrident>
-                {allIngridents}
+                {(allIngridents && allIngridents.length > 0) ? allIngridents 
+                : <div style={{fontWeight:'bold'}}>Add your Ingridents here</div> }
             <BurgerIngrident type="bottom-bread">Bottom Bread</BurgerIngrident>
         </Aux>
          
