@@ -7,7 +7,7 @@ import NavigationItems from '../../Navigation/NavigationItems/NavigationItems';
 const toolbar = (props) => {
     return (
     <header className={classes.toolbar}>
-        <BurgerMenu/>
+        <BurgerMenu toggle={props.toggleSideDrawer}/>
         <Logo/>
         <NavigationItems/>
         
