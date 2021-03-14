@@ -5,14 +5,13 @@
     justify-content: space-around;
     align-items: center;
     background-color: #f4d004;
-    margin: 10px auto;
+    margin: 1rem auto;
     border-radius: 15px;
 }
 
 .Label {
     text-transform: uppercase;
     font-weight: bold;
-    /* font-style: italic; */
     width: 50%;
     text-align: center;
     color: black;
@@ -38,4 +37,10 @@
 .Disable {
     opacity: .2;
     pointer-events: none;
+}
+
+@media (min-width: 500px) {
+    .Label {
+        text-align: left;
+    }
 }

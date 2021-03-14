@@ -8,6 +8,7 @@
     left: 5%;
     border-radius: 10px;
     transition: transform 0.3s ease-in-out;
+    font-size: 1rem;
 }
 
 .Open {
@@ -29,9 +30,17 @@
 
     @media(min-width: 500px) {
         .Modal {
-            width: 40%;
-            left: 25%;
+            width: 30%;
+            left: 30%;
             top: 20%;
+            font-size: 1.3rem;
+        }
+
+        .Modal ul {
+            list-style: none;
+            width: 50%;
+            margin:  1rem auto 0rem auto;
+            padding: 1rem;
         }
         
     }

@@ -7,7 +7,6 @@
 }
 
 .BuilderControls {
-    margin: auto;
     padding: 10px;
 }
 
@@ -43,7 +42,10 @@
         width: 500px;
         height: 400px;
         margin: 3rem auto 1rem auto;
-       
-   
+    }
+
+    .BuilderControlsContent {
+        width: 60%;
+        margin: auto;
     }
 }
