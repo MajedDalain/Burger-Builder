@@ -81,19 +81,22 @@ class BurgerBuilder extends Component {
             <div className= {classes.BurgerIngridents}>
             <Burger ingridents = {this.state.ingridents}/>
             </div>
-            {/* {this.state.showModal && <div> */}
-                    <Modal showModal={this.state.showModal} totalPrice={this.state.totalPrice} 
-                    ingridents={this.state.ingridents} cancel={this.hideOrderModal}/>
-                {/* </div>} */}
-            <span className={classes.TotalPrice}>total Price: {this.state.totalPrice}{" $"}</span>
-            <div className={classes.BuilderControls}>
-             <BuilderControls ingridents = {this.state.ingridents} add={this.addIngrident} remove= {this.removeIngrident}/>
+            <Modal showModal={this.state.showModal} 
+                   totalPrice={this.state.totalPrice} 
+                   ingridents={this.state.ingridents} 
+                   cancel={this.hideOrderModal}/>
+            <div className={classes.BuilderControlsContent}>
+                <span className={classes.TotalPrice}>total Price: {this.state.totalPrice}{" $"}</span>
+                <div className={classes.BuilderControls}>
+                     <BuilderControls ingridents = {this.state.ingridents} add={this.addIngrident} remove= {this.removeIngrident}/>
+                </div>
+                <div>
+                    <button className={orderBtnStyle} onClick={this.showOrderModal}>
+                        Order Now
+                    </button>
+                </div>
             </div>
-            <div>
-                <button className={orderBtnStyle} onClick={this.showOrderModal}>
-                    Order Now
-                </button>
-            </div>
+            
         </Aux>
         )
     }
