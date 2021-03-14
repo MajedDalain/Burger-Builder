@@ -81,9 +81,10 @@ class BurgerBuilder extends Component {
             <div className= {classes.BurgerIngridents}>
             <Burger ingridents = {this.state.ingridents}/>
             </div>
-            {this.state.showModal && <div className={classes.Modal}>
-                    <Modal totalPrice={this.state.totalPrice} ingridents={this.state.ingridents} cancel={this.hideOrderModal}/>
-                </div>}
+            {/* {this.state.showModal && <div> */}
+                    <Modal showModal={this.state.showModal} totalPrice={this.state.totalPrice} 
+                    ingridents={this.state.ingridents} cancel={this.hideOrderModal}/>
+                {/* </div>} */}
             <span className={classes.TotalPrice}>total Price: {this.state.totalPrice}{" $"}</span>
             <div className={classes.BuilderControls}>
              <BuilderControls ingridents = {this.state.ingridents} add={this.addIngrident} remove= {this.removeIngrident}/>

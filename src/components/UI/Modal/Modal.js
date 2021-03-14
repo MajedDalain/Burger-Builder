@@ -6,10 +6,11 @@ import BackDrop from '../BackDrop/BackDrop';
 import Button from '../../UI/Button/Button';
 
 const Modal = (props) => {
+    const modalClasses = props.showModal ? classes.Open : classes.Close;
     return(
         <Aux>
-            <BackDrop/>
-            <div className={classes.Modal}>
+            {props.showModal && <BackDrop/>}
+            <div className={[classes.Modal, modalClasses].join(" ")}>
                 <OrderSummary totalPrice={props.totalPrice} ingridents={props.ingridents}/>
                 <div>
                     <Button type="Confirm">Confirm</Button>
