@@ -4,7 +4,7 @@ import Aux from '../hoc/Aux/Aux';
 import BuilderControls from '../../components/Burger/BuilderControls/BuilderControls';
 import Modal from '../../components/UI/Modal/Modal'
 import classes from './BurgerBuilder.module.css';
-import HttpHelper from '../../components/Helper/HttpHelper';
+import OrderSummary from '../../components/Burger/OrderSummary/OrderSummary';
 import httpHelper from '../../components/Helper/HttpHelper';
 
 class BurgerBuilder extends Component {
@@ -96,11 +96,13 @@ class BurgerBuilder extends Component {
             <div className= {classes.BurgerIngridents}>
             <Burger ingridents = {this.state.ingridents}/>
             </div>
-            <Modal showModal={this.state.showModal} 
-                   totalPrice={this.state.totalPrice} 
-                   ingridents={this.state.ingridents} 
-                   cancel={this.hideOrderModal}
-                   confirm={this.confirmOrder}/>
+            <Modal showModal={this.state.showModal}>
+                <OrderSummary 
+                    totalPrice={this.state.totalPrice} 
+                    ingridents={this.state.ingridents}
+                    confirmClicked= {this.confirmOrder}
+                    cancelClicked={this.hideOrderModal}/>
+            </Modal>
             <div className={classes.BuilderControlsContent}>
                 <span className={classes.TotalPrice}>total Price: {this.state.totalPrice}{" $"}</span>
                 <div className={classes.BuilderControls}>
