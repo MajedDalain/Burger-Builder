@@ -19,8 +19,8 @@ class Modal extends Component  {
                 <div className={[classes.Modal, modalClasses].join(" ")}>
                     <OrderSummary totalPrice={this.props.totalPrice} ingridents={this.props.ingridents}/>
                     <div>
-                        <Button type="Confirm">Confirm</Button>
-                        <Button type = "Cancel" cancel={this.props.cancel}>Cancel</Button>
+                        <Button type = "Cancel" clicked={this.props.cancel}>Cancel</Button>
+                        <Button type="Confirm" clicked={this.props.confirm}>Confirm</Button>
                     </div>
                   
                 </div>

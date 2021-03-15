@@ -4,7 +4,8 @@ import Aux from '../hoc/Aux/Aux';
 import BuilderControls from '../../components/Burger/BuilderControls/BuilderControls';
 import Modal from '../../components/UI/Modal/Modal'
 import classes from './BurgerBuilder.module.css';
-
+import HttpHelper from '../../components/Helper/HttpHelper';
+import httpHelper from '../../components/Helper/HttpHelper';
 
 class BurgerBuilder extends Component {
 
@@ -54,9 +55,23 @@ class BurgerBuilder extends Component {
    }
 
    hideOrderModal = () => {
+    console.log("cancel is clicked");
     this.setState({showModal: false});
    }
 
+   confirmOrder = () => {
+       httpHelper.post('./orders.json', {
+           ...this.state,
+           cutomer: {
+               name: "majed",
+               age:'30',
+               address:"blidvadersgatan"
+           }
+       }).then(res => {
+           console.log(res)
+       })
+       .catch(error => console.log(error))
+   }
 
 
    removeIngrident = (e)  => {
@@ -84,7 +99,8 @@ class BurgerBuilder extends Component {
             <Modal showModal={this.state.showModal} 
                    totalPrice={this.state.totalPrice} 
                    ingridents={this.state.ingridents} 
-                   cancel={this.hideOrderModal}/>
+                   cancel={this.hideOrderModal}
+                   confirm={this.confirmOrder}/>
             <div className={classes.BuilderControlsContent}>
                 <span className={classes.TotalPrice}>total Price: {this.state.totalPrice}{" $"}</span>
                 <div className={classes.BuilderControls}>
