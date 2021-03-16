@@ -37,7 +37,7 @@ class BurgerBuilder extends Component {
     }
 
     getIngridents = () => {
-        httpHelper.get('ingridents')
+        httpHelper.get('ingridents.json')
         .then(res => {
             this.setState({
                 ingridents: res.data
@@ -76,7 +76,7 @@ class BurgerBuilder extends Component {
 
        this.setState({modalLoading: true});
 
-       httpHelper.post('orders', {
+       httpHelper.post('orders.json', {
            ...this.state,
            cutomer: {
                name: "majed",
