@@ -6,8 +6,12 @@ import BackDrop from '../BackDrop/BackDrop';
 
 class Modal extends Component  {
 
+    componentDidUpdate() {
+        console.log("modal is updated");
+    }
+
     shouldComponentUpdate(nextProps,nextState) {
-        return nextProps.showModal !== this.props.showModal;
+        return (nextProps.showModal !== this.props.showModal) || (nextProps.children !== this.props.children);
     }
     
     render() {
