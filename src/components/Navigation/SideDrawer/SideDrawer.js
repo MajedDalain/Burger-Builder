@@ -10,7 +10,7 @@ const sideDrawer = (props) => {
 
     return(
         <Aux>
-            {props.toggleSideDrawer && <BackDrop toggle={props.handleSideDrawer}/>}
+            {props.toggleSideDrawer && <BackDrop clicked={props.handleSideDrawer}/>}
             <div className={[classes.Content,sideDrawerClasses].join(" ")}>
                 <div className={classes.Logo}>
                     <Logo/>
