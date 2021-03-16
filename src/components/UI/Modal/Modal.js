@@ -1,14 +1,17 @@
 import React , {Component} from 'react';
-import OrderSummary from '../../../components/Burger/OrderSummary/OrderSummary';
 import Aux from '../../../containers/hoc/Aux/Aux';
 import classes from './Modal.module.css';
 import BackDrop from '../BackDrop/BackDrop';
-import Button from '../../UI/Button/Button';
+
 
 class Modal extends Component  {
 
+    componentDidUpdate() {
+        console.log("modal is updated");
+    }
+
     shouldComponentUpdate(nextProps,nextState) {
-        return nextProps.showModal !== this.props.showModal;
+        return (nextProps.showModal !== this.props.showModal) || (nextProps.children !== this.props.children);
     }
     
     render() {
@@ -17,12 +20,7 @@ class Modal extends Component  {
             <Aux>
                 {this.props.showModal && <BackDrop/>}
                 <div className={[classes.Modal, modalClasses].join(" ")}>
-                    <OrderSummary totalPrice={this.props.totalPrice} ingridents={this.props.ingridents}/>
-                    <div>
-                        <Button type = "Cancel" clicked={this.props.cancel}>Cancel</Button>
-                        <Button type="Confirm" clicked={this.props.confirm}>Confirm</Button>
-                    </div>
-                  
+                    {this.props.children}
                 </div>
             
             </Aux>

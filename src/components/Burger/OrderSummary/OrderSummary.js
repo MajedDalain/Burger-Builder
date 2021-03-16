@@ -1,8 +1,10 @@
 import React from 'react';
 import Aux from '../../../containers/hoc/Aux/Aux';
 import classes from './OrderSummary.module.css';
+import Button from '../../UI/Button/Button';
 
 const orderSummary = (props) => {
+    
     const ingridentsList = Object.keys(props.ingridents).map(el => {
     return (
         <li key={el} className={classes.List}>
@@ -25,6 +27,11 @@ const orderSummary = (props) => {
                 {ingridentsList}
             </ul>
             <span>Price : <strong className={classes.TotalPrice}>{props.totalPrice} $</strong></span>
+            <div>
+                <Button type = "Cancel" clicked={props.cancelClicked}>Cancel</Button>
+                <Button type="Confirm" clicked={props.confirmClicked}>Confirm</Button>
+            </div>
+            
         </Aux>
     )
 }

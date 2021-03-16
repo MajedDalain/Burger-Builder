@@ -4,8 +4,9 @@ import Aux from '../hoc/Aux/Aux';
 import BuilderControls from '../../components/Burger/BuilderControls/BuilderControls';
 import Modal from '../../components/UI/Modal/Modal'
 import classes from './BurgerBuilder.module.css';
-import HttpHelper from '../../components/Helper/HttpHelper';
+import OrderSummary from '../../components/Burger/OrderSummary/OrderSummary';
 import httpHelper from '../../components/Helper/HttpHelper';
+import Spinner from '../../components/UI/Spinner/Spinner';
 
 class BurgerBuilder extends Component {
 
@@ -28,11 +29,12 @@ class BurgerBuilder extends Component {
         meat:0,
     }, 
     totalPrice: 0,
-    showModal: false
+    showModal: false,
+    modalLoading: false
     }
 
     componentDidMount() {
-        // console.log("inside component did upd")
+        
     }
 
    addIngrident = (e) =>  {
@@ -55,11 +57,12 @@ class BurgerBuilder extends Component {
    }
 
    hideOrderModal = () => {
-    console.log("cancel is clicked");
     this.setState({showModal: false});
    }
 
    confirmOrder = () => {
+       this.setState({modalLoading: true});
+
        httpHelper.post('./orders.json', {
            ...this.state,
            cutomer: {
@@ -68,9 +71,12 @@ class BurgerBuilder extends Component {
                address:"blidvadersgatan"
            }
        }).then(res => {
-           console.log(res)
+           this.setState({
+               modalLoading: false,
+               showModal: false
+        });
        })
-       .catch(error => console.log(error))
+       .catch(error => console.log(error));
    }
 
 
@@ -89,18 +95,25 @@ class BurgerBuilder extends Component {
     }))
    }
    
-    render() {
-        const orderBtnStyle = `${classes.OrderNow} ${this.state.totalPrice > 0 ? classes.OrderNowActive : classes.OrderNowDisable}`;
+    render() 
+    {
+
+        const orderBtnStyle = `${classes.OrderNow} ${this.state.totalPrice > 0 ? 
+            classes.OrderNowActive : classes.OrderNowDisable}`;
+        
         return (
         <Aux>
             <div className= {classes.BurgerIngridents}>
             <Burger ingridents = {this.state.ingridents}/>
             </div>
-            <Modal showModal={this.state.showModal} 
-                   totalPrice={this.state.totalPrice} 
-                   ingridents={this.state.ingridents} 
-                   cancel={this.hideOrderModal}
-                   confirm={this.confirmOrder}/>
+            <Modal showModal={this.state.showModal}>
+                {this.state.modalLoading ? <Spinner/> 
+                :<OrderSummary 
+                totalPrice={this.state.totalPrice} 
+                ingridents={this.state.ingridents}
+                confirmClicked= {this.confirmOrder}
+                cancelClicked={this.hideOrderModal}/> }
+            </Modal>
             <div className={classes.BuilderControlsContent}>
                 <span className={classes.TotalPrice}>total Price: {this.state.totalPrice}{" $"}</span>
                 <div className={classes.BuilderControls}>
