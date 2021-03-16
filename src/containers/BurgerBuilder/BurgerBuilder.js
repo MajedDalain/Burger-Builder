@@ -7,6 +7,9 @@ import classes from './BurgerBuilder.module.css';
 import OrderSummary from '../../components/Burger/OrderSummary/OrderSummary';
 import httpHelper from '../../components/Helper/HttpHelper';
 import Spinner from '../../components/UI/Spinner/Spinner';
+import withErrorHandling from '../hoc/withErrorHandling/withErrorHandling';
+import axios from 'axios';
+
 
 class BurgerBuilder extends Component {
 
@@ -61,9 +64,10 @@ class BurgerBuilder extends Component {
    }
 
    confirmOrder = () => {
+       console.log("inside the confirm order")
        this.setState({modalLoading: true});
 
-       httpHelper.post('./orders.json', {
+       httpHelper.post('/orders.', {
            ...this.state,
            cutomer: {
                name: "majed",
@@ -71,12 +75,12 @@ class BurgerBuilder extends Component {
                address:"blidvadersgatan"
            }
        }).then(res => {
+           console.log(res);
            this.setState({
                modalLoading: false,
                showModal: false
-        });
-       })
-       .catch(error => console.log(error));
+        })
+       }).catch(error => {})
    }
 
 
@@ -131,4 +135,4 @@ class BurgerBuilder extends Component {
     }
 }
 
-export default BurgerBuilder;
+export default withErrorHandling(BurgerBuilder,httpHelper);
