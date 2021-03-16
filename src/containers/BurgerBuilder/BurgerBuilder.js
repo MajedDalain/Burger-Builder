@@ -8,7 +8,7 @@ import OrderSummary from '../../components/Burger/OrderSummary/OrderSummary';
 import httpHelper from '../../components/Helper/HttpHelper';
 import Spinner from '../../components/UI/Spinner/Spinner';
 import withErrorHandling from '../hoc/withErrorHandling/withErrorHandling';
-import axios from 'axios';
+
 
 
 class BurgerBuilder extends Component {
@@ -25,19 +25,28 @@ class BurgerBuilder extends Component {
     }
 
     state = {
-        ingridents: {
-        salad:0,
-        bacon:0,
-        cheese: 0,
-        meat:0,
-    }, 
+    ingridents: null,
     totalPrice: 0,
     showModal: false,
-    modalLoading: false
+    modalLoading: false,
+    error:null
     }
 
     componentDidMount() {
-        
+        this.getIngridents();
+    }
+
+    getIngridents = () => {
+        httpHelper.get('ingridents')
+        .then(res => {
+            this.setState({
+                ingridents: res.data
+            })
+        }).catch(error => {
+            this.setState({
+                error: error
+            })
+        });
     }
 
    addIngrident = (e) =>  {
@@ -64,10 +73,10 @@ class BurgerBuilder extends Component {
    }
 
    confirmOrder = () => {
-       console.log("inside the confirm order")
+
        this.setState({modalLoading: true});
 
-       httpHelper.post('/orders.', {
+       httpHelper.post('orders', {
            ...this.state,
            cutomer: {
                name: "majed",
@@ -75,7 +84,6 @@ class BurgerBuilder extends Component {
                address:"blidvadersgatan"
            }
        }).then(res => {
-           console.log(res);
            this.setState({
                modalLoading: false,
                showModal: false
@@ -99,25 +107,17 @@ class BurgerBuilder extends Component {
     }))
    }
    
-    render() 
-    {
+    render()  {
 
         const orderBtnStyle = `${classes.OrderNow} ${this.state.totalPrice > 0 ? 
             classes.OrderNowActive : classes.OrderNowDisable}`;
-        
+     
         return (
         <Aux>
+            {(this.state.ingridents) ? <div>
             <div className= {classes.BurgerIngridents}>
             <Burger ingridents = {this.state.ingridents}/>
             </div>
-            <Modal showModal={this.state.showModal}>
-                {this.state.modalLoading ? <Spinner/> 
-                :<OrderSummary 
-                totalPrice={this.state.totalPrice} 
-                ingridents={this.state.ingridents}
-                confirmClicked= {this.confirmOrder}
-                cancelClicked={this.hideOrderModal}/> }
-            </Modal>
             <div className={classes.BuilderControlsContent}>
                 <span className={classes.TotalPrice}>total Price: {this.state.totalPrice}{" $"}</span>
                 <div className={classes.BuilderControls}>
@@ -129,6 +129,17 @@ class BurgerBuilder extends Component {
                     </button>
                 </div>
             </div>
+            </div> 
+            : this.state.error ? <div className={classes.Error}>Error getting ingridents</div> 
+            : <Spinner/>}
+            <Modal showModal={this.state.showModal}>
+                {this.state.modalLoading ? <Spinner/> 
+                : this.state.ingridents ? <OrderSummary 
+                totalPrice={this.state.totalPrice} 
+                ingridents={this.state.ingridents}
+                confirmClicked= {this.confirmOrder}
+                cancelClicked={this.hideOrderModal}/> : null }
+            </Modal>
             
         </Aux>
         )

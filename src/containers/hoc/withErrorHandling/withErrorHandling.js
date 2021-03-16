@@ -7,18 +7,23 @@ const withErrorHandling = (WrappedComponent, httpHelper) => {
     
     return class extends Component {
 
-        componentDidMount() {
-            console.log("did mount in hoc");
+        
+        state = {
+            error: null
+        }
 
-            httpHelper.interceptors.request.use(req => {
-                console.log("request interceptor is called");
-                console.log("request",req);
+        UNSAFE_componentWillMount() {
+          
+           
+
+           this.reqInterceptor = httpHelper.interceptors.request.use(req => {
+               
                 this.setState({error: null});
                 return req;
             });
 
-            httpHelper.interceptors.response.use(res => res, error => {
-                console.log("inside the error");
+           this.resInterceoptor =  httpHelper.interceptors.response.use(res => res, error => {
+                
                     this.setState({
                         error:error
                     });
@@ -26,8 +31,9 @@ const withErrorHandling = (WrappedComponent, httpHelper) => {
                 });
         }
 
-        state = {
-            error: null
+        componentWillUnmount() {
+            httpHelper.interceptors.request.eject(this.reqInterceptor);
+            httpHelper.interceptors.response.eject(this.resInterceoptor);
         }
 
       
