@@ -22,14 +22,14 @@ const orderSummary = (props) => {
     return(
         <Aux>
             <h3>Order Summary</h3>
-            <p style={{fontSize:"1.1rem"}}> 🙅 Burger with following ingridents: </p>
+            <p style={{fontSize:"1.1rem"}}> 🍔🍟 Burger with following ingridents: </p>
             <ul>
                 {ingridentsList}
             </ul>
             <span>Price : <strong className={classes.TotalPrice}>{props.totalPrice} $</strong></span>
             <div>
                 <Button type = "Cancel" clicked={props.cancelClicked}>Cancel</Button>
-                <Button type="Confirm" clicked={props.confirmClicked}>Confirm</Button>
+                <Button type="Confirm" clicked={props.confirmClicked}>Continue</Button>
             </div>
             
         </Aux>
