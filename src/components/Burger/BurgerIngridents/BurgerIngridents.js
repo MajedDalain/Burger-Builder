@@ -4,13 +4,14 @@ import Aux from '../../../containers/hoc/Aux/Aux';
 
 // will take a list of ingridenets with amount and render list of ingridents compoentns with a class based on props. 
 const burgerIngridents = (props) => {
-
-    let allIngridents = []; 
-    const ingridentsLabels = Object.keys(props.ingridents);
     
+    let allIngridents = []; 
+
+    const ingridentsLabels = Object.keys(props.ingridents);
+
     ingridentsLabels.map((el,index) => {
         for(let i = 0 ; i < props.ingridents[el]; i++) {
-            allIngridents.push( <BurgerIngrident  type= {el}></BurgerIngrident>); 
+            allIngridents.push( <BurgerIngrident key={el} type= {el}></BurgerIngrident>); 
         }
     })
     

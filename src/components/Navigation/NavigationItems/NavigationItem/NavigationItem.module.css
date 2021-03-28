@@ -2,17 +2,15 @@
     margin: 1rem;
     font-weight: bold;
     font-size: 1.1rem;
-    
-}
-
-.NavigationItem a {
     color: rgb(5, 56, 116);
     text-decoration: none;
     cursor: pointer;
+    
 }
 
-.NavigationItem a:active,
-.NavigationItem a:hover,
-.NavigationItem a.active {
+
+.NavigationItem:active,
+.NavigationItem:hover,
+.NavigationItem.active {
     border-bottom: 1.5px solid rgb(29, 91, 161);
 }

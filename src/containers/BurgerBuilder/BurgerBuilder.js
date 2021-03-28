@@ -73,22 +73,31 @@ class BurgerBuilder extends Component {
    }
 
    confirmOrder = () => {
+    let getIngridentsIntoParams = [];
+    Object.keys(this.state.ingridents).map(key => {
+        getIngridentsIntoParams.push(`&${key}=${this.state.ingridents[key]}`)
+    });
+    
+    this.props.history.push({
+        pathname: '/checkout',
+        search: `?totalPrice=${this.state.totalPrice}${getIngridentsIntoParams.join('')}`
+    });
 
-       this.setState({modalLoading: true});
+    //    this.setState({modalLoading: true});
 
-       httpHelper.post('orders.json', {
-           ...this.state,
-           cutomer: {
-               name: "majed",
-               age:'30',
-               address:"blidvadersgatan"
-           }
-       }).then(res => {
-           this.setState({
-               modalLoading: false,
-               showModal: false
-        })
-       }).catch(error => {})
+    //    httpHelper.post('orders.json', {
+    //        ...this.state,
+    //        cutomer: {
+    //            name: "majed",
+    //            age:'30',
+    //            address:"blidvadersgatan"
+    //        }
+    //    }).then(res => {
+    //        this.setState({
+    //            modalLoading: false,
+    //            showModal: false
+    //     })
+    //    }).catch(error => {})
    }
 
 
