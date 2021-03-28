@@ -73,15 +73,14 @@ class BurgerBuilder extends Component {
    }
 
    confirmOrder = () => {
-    let ingridentsParam = [];
+    let getIngridentsIntoParams = [];
     Object.keys(this.state.ingridents).map(key => {
-        ingridentsParam.push(`&${key}=${this.state.ingridents[key]}`)
+        getIngridentsIntoParams.push(`&${key}=${this.state.ingridents[key]}`)
     });
-    const finalParam = ingridentsParam.join('');
-   
+    
     this.props.history.push({
         pathname: '/checkout',
-        search: `?totalPrice=${this.state.totalPrice}${finalParam}`
+        search: `?totalPrice=${this.state.totalPrice}${getIngridentsIntoParams.join('')}`
     });
 
     //    this.setState({modalLoading: true});

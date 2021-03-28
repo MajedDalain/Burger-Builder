@@ -1,35 +1,41 @@
 import React, { Component } from 'react';
 import classes from './Checkout.module.css';
+import CheckoutSummary from '../../components/Burger/CheckoutSummary/CheckoutSummary';
 
 class  Checkout extends Component {
 
     state = {
         ingridents: null,
+        totalPrice: 0,
+        isLoading: true
     }
 
     componentDidMount() {
-        console.log("checkout did mount");
-        console.log(this.props);
-        let ingridents = [];
+
+        let ingridents = {};
+
         const searchParams = new URLSearchParams(this.props.history.location.search);
-        for(let p of searchParams) {
-            if(p[0] !== 'totalPrice') {
-                ingridents.push(p)
+
+        for(let p of searchParams.keys()) {
+            if(p === 'totalPrice') {
+                this.setState({totalPrice: searchParams.get('totalPrice')});
+            } else {
+                ingridents[p] = searchParams.get(p);
             }
         }
-        console.log(ingridents);
+        this.setState({
+            ingridents: ingridents,
+            isLoading: false
+        })
     }
 
 
     render() {
-        const searchParams = new URLSearchParams(this.props.history.location.search);
-        for(let p of searchParams) {
-            if(p[0] !== 'totalPrfice') {
-                console.log(p);
-
-            }
-        }
-        return(<div className={classes.Checkout}>CheckOut Component!</div>)
+        return(
+             <div className={classes.Checkout}>
+                {!this.state.isLoading 
+                && <CheckoutSummary ingridents={this.state.ingridents}/>  }      
+            </div>)
     }
 }
 
