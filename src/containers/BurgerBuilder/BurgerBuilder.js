@@ -85,19 +85,7 @@ class BurgerBuilder extends Component {
 
     //    this.setState({modalLoading: true});
 
-    //    httpHelper.post('orders.json', {
-    //        ...this.state,
-    //        cutomer: {
-    //            name: "majed",
-    //            age:'30',
-    //            address:"blidvadersgatan"
-    //        }
-    //    }).then(res => {
-    //        this.setState({
-    //            modalLoading: false,
-    //            showModal: false
-    //     })
-    //    }).catch(error => {})
+     
    }
 
 
@@ -117,7 +105,6 @@ class BurgerBuilder extends Component {
    }
    
     render()  {
-
         const orderBtnStyle = `${classes.OrderNow} ${this.state.totalPrice > 0 ? 
             classes.OrderNowActive : classes.OrderNowDisable}`;
      

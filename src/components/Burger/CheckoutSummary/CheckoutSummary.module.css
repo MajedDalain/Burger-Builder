@@ -1,12 +1,13 @@
 .CheckoutSummary {
-    width: 300px;
+    width: 90%;
     height: 300px;
-    margin: 200px auto;
+    margin: 10rem auto 3rem auto;
+    overflow-y: auto;
 }
 
-@media(min-width:500px) {
+@media (min-width: 500px) {
     .CheckoutSummary {
-        width: 500px;
-        height: 400px;
+        width: 60%;
+        height: 500px;
     }
 }
