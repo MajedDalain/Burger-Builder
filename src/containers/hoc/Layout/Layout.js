@@ -12,13 +12,11 @@ class layout extends Component {
     }
 
     handleSideDrawerToggle = () => {
-        console.log("Layout component")
         this.setState((prevState) => {
             return {
                 toggleSideDrawer: !prevState.toggleSideDrawer
             }
         });
-        console.log(this.state.toggleSideDrawer);
     }
 
     render() {

@@ -3,7 +3,6 @@ import classes from './BurgerMenu.module.css';
 
 
 const burgerMenu = (props) => {
-    console.log(props);
     return(
         <div className={classes.Main} onClick={props.toggle}>
             <div className={classes.Item}></div>

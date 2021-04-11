@@ -8,7 +8,12 @@ const builderControls = (props) => {
     return (
         <Aux>
             <div>
-                {controllersKeys.map((el,index) => <BuilderControl value={props.ingridents[el]} label={el} add={props.add} remove={props.remove}></BuilderControl>)}
+                {controllersKeys.map((el,index) => 
+                <BuilderControl value={props.ingridents[el]} 
+                                label={el} add={props.add} 
+                                remove={props.remove}
+                                key={el}>
+                </BuilderControl>)}
             </div>
         </Aux>
     )

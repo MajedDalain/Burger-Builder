@@ -8,9 +8,12 @@
     
 }
 
+.NavigationItem a {
+    text-decoration: none;
+}
 
-.NavigationItem:active,
-.NavigationItem:hover,
-.NavigationItem.active {
-    border-bottom: 1.5px solid rgb(29, 91, 161);
+
+.NavigationItem a:active,
+.NavigationItem a.active {
+    border-bottom: 2px solid rgb(29, 91, 161);
 }

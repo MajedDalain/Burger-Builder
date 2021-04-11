@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import classes from './Checkout.module.css';
 import CheckoutSummary from '../../components/Burger/CheckoutSummary/CheckoutSummary';
+import CheckoutCustomerForm from '../../components/UI/CheckoutCustomerForm/CheckoutCustomerForm';
 
 class  Checkout extends Component {
 
@@ -11,6 +12,7 @@ class  Checkout extends Component {
     }
 
     componentDidMount() {
+        console.log(this.props);
 
         let ingridents = {};
 
@@ -29,12 +31,20 @@ class  Checkout extends Component {
         })
     }
 
+    backToBurgerBuilder = () => {
+        console.log("back button is clicked");
+        console.log(this.props);
+        this.props.history.push("/");
+    }
+    
+
 
     render() {
         return(
              <div className={classes.Checkout}>
                 {!this.state.isLoading 
-                && <CheckoutSummary ingridents={this.state.ingridents}/>  }      
+                && <CheckoutSummary ingridents={this.state.ingridents}/>  } 
+                {!this.state.isLoading && <CheckoutCustomerForm backClicked={this.backToBurgerBuilder} props={this.props}/>}     
             </div>)
     }
 }
